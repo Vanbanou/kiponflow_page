@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estudo Eficaz - Afie seu Machado Acadêmico</title>
+    <link rel="icon" href="caminho/para/seu/icon.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #4A6B8A; /* Azul */
+            --secondary-color: #D8A6B4; /* Rosa */
+            --accent-color: #F8D568; /* Amarelo */
+            --dark-color: #2c3e50; /* Azul escuro/Chumbo */
+            --light-gray: #ecf0f1; /* Cinza bem claro */
+            --white-color: #fff;
+            --text-color: #34495e; /* Cinza azulado */
+            --border-radius: 8px;
+            --box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth; /* Rolagem suave */
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.8;
+            background-color: var(--white-color);
+            color: var(--text-color);
+            overflow-x: hidden; /* Evita scroll horizontal */
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- Header & Nav --- */
+        .main-header {
+            background: var(--white-color);
+            padding: 15px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: background 0.3s ease;
+        }
+        .main-header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: var(--dark-color);
+        }
+        .logo img {
+            width: 40px;
+            height: auto;
+            margin-right: 10px;
+        }
+        .logo span {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        .main-nav a {
+            color: var(--text-color);
+            text-decoration: none;
+            margin-left: 25px;
+            font-weight: 700;
+            transition: color 0.3s ease;
+        }
+        .main-nav a:hover {
+            color: var(--primary-color);
+        }
+
+        /* --- Hero Section (Asymmetric) --- */
+        .hero {
+            background: var(--light-gray);
+            padding: 150px 0 80px 0; /* Espaço para header fixo */
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%); /* Forma inclinada */
+        }
+        .hero .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 40px;
+        }
+        .hero-text {
+            flex: 1;
+            max-width: 50%;
+        }
+        .hero-text h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.8rem;
+            color: var(--dark-color);
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+        .hero-text p {
+            font-size: 1.2rem;
+            margin-bottom: 35px;
+            color: var(--text-color);
+        }
+        .hero-image {
+            flex: 1;
+            text-align: center;
+        }
+        .hero-image img {
+            max-width: 350px;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+            transform: rotate(5deg); /* Leve inclinação */
+            transition: transform 0.5s ease;
+        }
+        .hero-image img:hover {
+             transform: rotate(0deg) scale(1.05);
+        }
+
+        /* --- Botão APK --- */
+        .btn-apk {
+            display: inline-flex;
+            align-items: center;
+            padding: 15px 35px;
+            background-color: var(--primary-color);
+            color: var(--white-color);
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(74, 107, 138, 0.4);
+        }
+        .btn-apk i {
+            margin-right: 12px;
+            font-size: 1.5rem;
+        }
+        .btn-apk:hover {
+            background-color: var(--dark-color);
+            transform: translateY(-3px);
+            box-shadow: 0 7px 15px rgba(44, 62, 80, 0.3);
+        }
+
+        /* --- Quote Section --- */
+        .quote-section {
+            background: var(--dark-color);
+            color: var(--light-gray);
+            padding: 100px 0;
+            text-align: center;
+            position: relative;
+            margin-top: -10vh; /* Sobrepõe a inclinação do hero */
+            padding-top: 15vh; /* Compensa a sobreposição */
+            clip-path: polygon(0 10%, 100% 0, 100% 100%, 0 100%); /* Forma inclinada oposta */
+        }
+        .quote-section blockquote {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            line-height: 1.5;
+            max-width: 800px;
+            margin: 0 auto 30px auto;
+            position: relative;
+            padding: 0 40px;
+        }
+        .quote-section blockquote::before,
+        .quote-section blockquote::after {
+            content: "“";
+            font-size: 6rem;
+            color: var(--primary-color);
+            opacity: 0.6;
+            position: absolute;
+            line-height: 1;
+        }
+        .quote-section blockquote::before {
+            top: -20px;
+            left: 0;
+        }
+        .quote-section blockquote::after {
+            content: "”";
+            bottom: -50px;
+            right: 0;
+        }
+        .quote-section cite {
+            font-style: normal;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--accent-color);
+        }
+
+        /* --- Philosophy Section --- */
+        .philosophy-section {
+            padding: 100px 0 50px 0;
+            text-align: center;
+            background: var(--white-color);
+        }
+        .philosophy-section .container {
+            max-width: 750px;
+        }
+        .philosophy-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        .philosophy-section p {
+            font-size: 1.15rem;
+            color: var(--text-color);
+            line-height: 1.9;
+        }
+        .philosophy-section .highlight {
+            font-weight: 700;
+            color: var(--dark-color);
+        }
+
+        /* --- Features Section (Alternating) --- */
+        .section {
+            padding: 80px 0;
+            overflow: hidden; /* Para animações */
+        }
+        .section h2 {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: var(--dark-color);
+            margin-bottom: 60px;
+        }
+        .feature-row {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            margin-bottom: 80px;
+        }
+        .feature-row:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+        .feature-text {
+            flex: 1;
+        }
+        .feature-text i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            background: var(--light-gray);
+            padding: 15px;
+            border-radius: 50%;
+            width: 70px;
+            height: 70px;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .feature-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: var(--dark-color);
+        }
+        .feature-image {
+            flex: 1;
+            text-align: center;
+        }
+        .feature-image img {
+            max-width: 80%;
+            height: auto;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+
+        /* --- Screenshots Section --- */
+        #screenshots {
+             background: var(--light-gray);
+             clip-path: polygon(0 10%, 100% 0, 100% 90%, 0 100%);
+             padding: 15vh 0;
+        }
+         #screenshots h2 {
+            margin-bottom: 80px;
+         }
+        .screenshots-carousel {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            overflow-x: auto;
+            padding: 20px;
+            scrollbar-width: thin;
+            scrollbar-color: var(--primary-color) var(--white-color);
+        }
+        .screenshots-carousel::-webkit-scrollbar { height: 8px; }
+        .screenshots-carousel::-webkit-scrollbar-track { background: var(--white-color); }
+        .screenshots-carousel::-webkit-scrollbar-thumb { background-color: var(--primary-color); border-radius: 20px; }
+        .screenshots-carousel img {
+            max-width: 260px;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            border: 5px solid var(--white-color);
+        }
+         .screenshots-carousel img:hover { transform: scale(1.05) translateY(-5px); }
+
+
+        /* --- Final CTA Section --- */
+        #download {
+            background: var(--primary-color);
+            color: var(--white-color);
+            padding: 100px 0;
+            text-align: center;
+        }
+        #download h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: var(--white-color);
+            margin-bottom: 20px;
+        }
+        #download p {
+            font-size: 1.15rem;
+            max-width: 600px;
+            margin: 0 auto 40px auto;
+            opacity: 0.9;
+        }
+        #download .btn-apk {
+            background: var(--white-color);
+            color: var(--primary-color);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+         #download .btn-apk:hover {
+            background: var(--accent-color);
+            color: var(--dark-color);
+            box-shadow: 0 7px 15px rgba(0, 0, 0, 0.3);
+         }
+
+        /* --- Footer --- */
+        .footer {
+            background-color: var(--dark-color);
+            color: var(--light-gray);
+            padding: 40px 0;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+        .footer a {
+            color: var(--light-gray);
+            text-decoration: none;
+            margin: 0 10px;
+        }
+         .footer a:hover {
+            color: var(--accent-color);
+            text-decoration: underline;
+         }
+
+
+        /* --- Responsividade --- */
+        @media (max-width: 768px) {
+            .main-nav { display: none; /* Simplificar header em telas pequenas */ }
+            .hero .container { flex-direction: column; text-align: center; }
+            .hero-text { max-width: 100%; order: 2; }
+            .hero-image { order: 1; margin-bottom: 30px; }
+            .hero h1 { font-size: 2.8rem; }
+            .hero-image img { max-width: 250px; transform: rotate(0); }
+            .hero { clip-path: none; padding-top: 100px; }
+            .quote-section { clip-path: none; margin-top: 0; padding: 80px 0; }
+            .quote-section blockquote { font-size: 1.8rem; }
+            .quote-section blockquote::before, .quote-section blockquote::after { font-size: 4rem; }
+            .philosophy-section h2, .section h2, #download h2 { font-size: 2.2rem; }
+            .feature-row, .feature-row:nth-child(even) { flex-direction: column; }
+            .feature-image { margin-top: 30px; }
+            #screenshots { clip-path: none; padding: 80px 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container">
+            <a href="#" class="logo">
+                <img src="icon.png" alt="Logo">
+                <span>Kiponflow</span> </a>
+            <nav class="main-nav">
+                <a href="#philosophy">Filosofia</a>
+                <a href="#features">Funcionalidades</a>
+                <a href="#screenshots">Telas</a>
+                <a href="#download">Download</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-text">
+                <h1>Afie seu Machado Acadêmico.</h1>
+                <p>O sucesso nos estudos não é sobre trabalhar mais, é sobre trabalhar de forma mais inteligente. Organize, planeje e conquiste com nosso app.</p>
+                <a href="caminho/para/seu/aplicativo.apk" class="btn-apk" download>
+                    <i class="fab fa-android"></i>
+                    Baixar APK Grátis
+                </a>
+            </div>
+            <div class="hero-image">
+                <img src="icon.png" alt="Mockup do Aplicativo">
+            </div>
+        </div>
+    </section>
+
+    <section id="philosophy" class="quote-section">
+        <div class="container">
+            <blockquote>
+                Se eu tivesse oito horas para derrubar uma árvore, passaria as primeiras seis afiando meu machado.
+            </blockquote>
+            <cite>Abraham Lincoln</cite>
+        </div>
+    </section>
+
+    <section class="philosophy-section">
+        <div class="container">
+            <h2>O Segredo? Afiar Melhor.</h2>
+            <p>Como Lincoln nos ensinou, a <span class="highlight">preparação</span> é a chave para a eficiência. No mundo acadêmico, seu "machado" são suas habilidades de organização, planejamento e foco. Nosso aplicativo foi criado exatamente para isso: ajudar você a <span class="highlight">afiar seu machado</span>, permitindo que você gaste seu tempo de forma mais inteligente, alcance melhores resultados e reduza o estresse.</p>
+        </div>
+    </section>
+
+    <section id="features" class="section">
+        <div class="container">
+            <h2>Afie seu Estudo com Estas Ferramentas:</h2>
+
+            <div class="feature-row">
+                <div class="feature-text">
+                    <i class="fas fa-calendar-alt"></i>
+                    <h3>Horários Organizados</h3>
+                    <p>Visualize sua semana, gerencie suas matérias e nunca mais perca uma aula. A base de um bom corte.</p>
+                </div>
+                <div class="feature-image">
+                     <img src="screen_1.png" alt="Funcionalidade 1">
+                </div>
+            </div>
+
+            <div class="feature-row">
+                <div class="feature-text">
+                    <i class="fas fa-book-reader"></i>
+                    <h3>Notas Sob Controle</h3>
+                    <p>Registre suas notas, acompanhe seu progresso e saiba exatamente onde precisa focar sua lâmina.</p>
+                </div>
+                <div class="feature-image">
+                     <img src="screen_2.png" alt="Funcionalidade 2">
+                </div>
+            </div>
+
+             <div class="feature-row">
+                <div class="feature-text">
+                    <i class="fas fa-calendar-check"></i>
+                    <h3>Calendário Inteligente</h3>
+                    <p>Marque provas, trabalhos e lembretes. Antecipe os movimentos e planeje seus golpes.</p>
+                </div>
+                <div class="feature-image">
+                     <img src="screen_3.png" alt="Funcionalidade 3">
+                </div>
+            </div>
+
+             <div class="feature-row">
+                <div class="feature-text">
+                    <i class="fas fa-sticky-note"></i>
+                    <h3>Anotações Rápidas</h3>
+                    <p>Capture insights e resumos importantes. Mantenha as ideias afiadas e prontas para usar.</p>
+                </div>
+                <div class="feature-image">
+                     <img src="screen_4.png" alt="Funcionalidade 4">
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="screenshots" class="section">
+        <div class="container">
+            <h2>Funcionalidades</h2>
+            <div class="screenshots-carousel">
+                <img src="screen_1.png" alt="Screenshot 3">
+                <img src="screen_2.png" alt="Screenshot 4">
+                <img src="screen_3.png" alt="Screenshot 5">
+                <img src="screen_4.png" alt="Screenshot 6">
+            </div>
+        </div>
+    </section>
+
+    <section id="download" class="section">
+        <div class="container">
+            <h2>Pronto para Cortar Árvores?</h2>
+            <p>Chega de esforço desperdiçado. Baixe o Kiponflow e comece a estudar de forma mais eficaz hoje mesmo!</p>
+             <a href="caminho/para/seu/aplicativo.apk" class="btn-apk" download>
+                <i class="fas fa-download"></i>
+                Baixar APK Agora!
+            </a>
+            <p style="margin-top: 20px; font-size: 0.8rem; opacity: 0.7;">
+                (Disponível para Android via download direto)
+            </p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Vanbanou Maurício. <a href="#privacy">Política de Privacidade</a> | <a href="#contact">Contato</a></p>
+        </div>
+    </footer>
+
+</body>
+</html>
