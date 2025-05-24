@@ -117,7 +117,7 @@
         }
         .hero-text p {
             font-size: 1.2rem;
-            margin-bottom: 35px;
+            margin-bottom: 20px; /* Ajustado */
             color: var(--text-color);
         }
         .hero-image {
@@ -140,25 +140,56 @@
         .btn-apk {
             display: inline-flex;
             align-items: center;
-            padding: 15px 35px;
+            justify-content: center; /* Centraliza ícone e texto */
+            padding: 15px 30px; /* Ajustado padding */
             background-color: var(--primary-color);
             color: var(--white-color);
             text-decoration: none;
             border-radius: 50px;
-            font-size: 1.2rem;
+            font-size: 1.1rem; /* Ajustado */
             font-weight: 700;
             transition: all 0.3s ease;
             box-shadow: 0 4px 10px rgba(74, 107, 138, 0.4);
+            min-width: 260px; /* Para manter um tamanho mínimo */
+            text-align: center;
         }
         .btn-apk i {
             margin-right: 12px;
-            font-size: 1.5rem;
+            font-size: 1.4rem; /* Ajustado */
         }
         .btn-apk:hover {
             background-color: var(--dark-color);
             transform: translateY(-3px);
             box-shadow: 0 7px 15px rgba(44, 62, 80, 0.3);
         }
+
+        /* Estilos para botões secundários e terciários (Hero) */
+        .hero-text .btn-apk-secondary, .hero-text .btn-apk-tertiary {
+            background-color: #6c757d; /* Cinza para diferenciar */
+            box-shadow: 0 4px 10px rgba(108, 117, 125, 0.3);
+        }
+        .hero-text .btn-apk-secondary:hover, .hero-text .btn-apk-tertiary:hover {
+            background-color: #5a6268; /* Cinza mais escuro */
+        }
+        .hero-text .btn-apk-tertiary {
+            background-color: #778899; /* Outro tom de cinza */
+             box-shadow: 0 4px 10px rgba(119, 136, 153, 0.3);
+        }
+        .hero-text .btn-apk-tertiary:hover{
+            background-color: #5f6f7f;
+        }
+
+
+        .apk-download-options .download-item {
+            margin-bottom: 20px;
+        }
+        .apk-download-options .download-item p.apk-description {
+            font-size: 0.85rem;
+            margin-top: 5px;
+            margin-bottom: 0;
+            color: var(--text-color);
+        }
+
 
         /* --- Quote Section --- */
         .quote-section {
@@ -331,10 +362,10 @@
         #download p {
             font-size: 1.15rem;
             max-width: 600px;
-            margin: 0 auto 40px auto;
+            margin: 0 auto 30px auto; /* Ajustado margin-bottom */
             opacity: 0.9;
         }
-        #download .btn-apk {
+        #download .btn-apk { /* Estilo base do botão no CTA */
             background: var(--white-color);
             color: var(--primary-color);
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
@@ -344,6 +375,39 @@
             color: var(--dark-color);
             box-shadow: 0 7px 15px rgba(0, 0, 0, 0.3);
          }
+        /* Para os botões secundários no CTA */
+        #download .btn-apk-alt {
+            background: var(--light-gray);
+            color: var(--primary-color); /* Mantém cor do texto primário para contraste */
+        }
+        #download .btn-apk-alt:hover {
+            background: var(--accent-color);
+            color: var(--dark-color);
+        }
+
+
+        .cta-download-options {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px; /* Espaço entre cada item de download */
+            margin-top: 20px;
+        }
+        .cta-download-options .download-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 10px; /* Espaço abaixo de cada conjunto botão+texto */
+        }
+        .cta-download-options .download-item .btn-apk {
+            margin-bottom: 8px; /* Espaço entre o botão e sua descrição */
+        }
+        .cta-download-options p.apk-description {
+            font-size: 0.9rem;
+            opacity: 0.85;
+            color: var(--white-color);
+        }
+
 
         /* --- Footer --- */
         .footer {
@@ -365,11 +429,16 @@
 
 
         /* --- Responsividade --- */
+        @media (max-width: 992px) { /* Ajuste para tablets e telas menores */
+            .hero-text { max-width: 100%; order: 2; text-align: center; }
+            .hero .container { flex-direction: column; text-align: center; }
+            .hero-image { order: 1; margin-bottom: 40px; }
+            .apk-download-options .download-item { align-items: center; }
+        }
+
         @media (max-width: 768px) {
             .main-nav { display: none; /* Simplificar header em telas pequenas */ }
-            .hero .container { flex-direction: column; text-align: center; }
-            .hero-text { max-width: 100%; order: 2; }
-            .hero-image { order: 1; margin-bottom: 30px; }
+            /* .hero .container já está column de cima */
             .hero h1 { font-size: 2.8rem; }
             .hero-image img { max-width: 250px; transform: rotate(0); }
             .hero { clip-path: none; padding-top: 100px; }
@@ -380,7 +449,32 @@
             .feature-row, .feature-row:nth-child(even) { flex-direction: column; }
             .feature-image { margin-top: 30px; }
             #screenshots { clip-path: none; padding: 80px 0; }
+
+            .btn-apk { font-size: 1rem; padding: 12px 25px; min-width: 240px; }
+            .btn-apk i { font-size: 1.3rem; margin-right: 10px;}
+
+            /* Downloads no CTA em telas menores */
+            .cta-download-options {
+                gap: 20px; /* Aumenta o espaço entre os itens na vertical */
+            }
+             .cta-download-options .download-item .btn-apk {
+                width: 100%; /* Faz os botões ocuparem mais largura se preferir */
+                max-width: 300px; /* Limita a largura máxima */
+            }
         }
+
+        @media (min-width: 769px) { /* Para telas maiores, botões do CTA lado a lado */
+            .cta-download-options {
+                flex-direction: row;
+                justify-content: center;
+                flex-wrap: wrap; /* Permite quebra de linha se não couber */
+                gap: 20px; /* Espaço horizontal entre os itens */
+            }
+            .cta-download-options .download-item {
+                margin-bottom: 0; /* Remove margem inferior pois o gap já cuida */
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -388,8 +482,9 @@
     <header class="main-header">
         <div class="container">
             <a href="#" class="logo">
-                <img src="icon.png" alt="Logo">
-                <span>Kiponflow</span> </a>
+                <img src="icon.png" alt="Logo Kiponflow">
+                <span>Kiponflow</span>
+            </a>
             <nav class="main-nav">
                 <a href="#philosophy">Filosofia</a>
                 <a href="#features">Funcionalidades</a>
@@ -404,13 +499,32 @@
             <div class="hero-text">
                 <h1>Afie seu Machado Acadêmico.</h1>
                 <p>O sucesso nos estudos não é sobre trabalhar mais, é sobre trabalhar de forma mais inteligente. Organize, planeje e conquiste com nosso app.</p>
-                <a href="caminho/para/seu/aplicativo.apk" class="btn-apk" download>
-                    <i class="fab fa-android"></i>
-                    Baixar APK Grátis
-                </a>
+                <p style="font-size: 1rem; margin-bottom: 15px; font-weight: bold;">Escolha a versão para o seu dispositivo:</p>
+                <div class="apk-download-options">
+                    <div class="download-item">
+                        <a href="https://drive.google.com/file/d/1XenRbKm79qF7Y0zrST1h8GHd1ni1N8Bz/view?usp=drive_link" class="btn-apk" download>
+                            <i class="fab fa-android"></i>
+                            Baixar APK (64-bit)
+                        </a>
+                        <p class="apk-description">Recomendado para celulares modernos.</p>
+                    </div>
+                    <div class="download-item">
+                        <a href="https://drive.google.com/file/d/1oGTCnmgj6ww2yPlQVRYssxARf2OOZXBH/view?usp=drive_link" class="btn-apk btn-apk-secondary" download>
+                            <i class="fab fa-android"></i>
+                            Baixar APK (32-bit)
+                        </a>
+                        <p class="apk-description">Para celulares mais antigos.</p>
+                    </div>
+                    <div class="download-item">
+                        <a href="https://drive.google.com/file/d/1YtIojcbQwOXDDhHKNL8n8rDNbhE7og5k/view?usp=drive_link" class="btn-apk btn-apk-tertiary" download>
+                            <i class="fas fa-laptop-code"></i> Baixar APK (x86_64)
+                        </a>
+                        <p class="apk-description">Para emuladores ou dispositivos específicos (ex: Chromebooks).</p>
+                    </div>
+                </div>
             </div>
             <div class="hero-image">
-                <img src="icon.png" alt="Mockup do Aplicativo">
+                <img src="icon.png" alt="Mockup do Aplicativo Kiponflow">
             </div>
         </div>
     </section>
@@ -442,7 +556,7 @@
                     <p>Visualize sua semana, gerencie suas matérias e nunca mais perca uma aula. A base de um bom corte.</p>
                 </div>
                 <div class="feature-image">
-                     <img src="screen_1.png" alt="Funcionalidade 1">
+                     <img src="screen_1.png" alt="Horários Organizados">
                 </div>
             </div>
 
@@ -453,7 +567,7 @@
                     <p>Registre suas notas, acompanhe seu progresso e saiba exatamente onde precisa focar sua lâmina.</p>
                 </div>
                 <div class="feature-image">
-                     <img src="screen_2.png" alt="Funcionalidade 2">
+                     <img src="screen_2.png" alt="Notas Sob Controle">
                 </div>
             </div>
 
@@ -464,7 +578,7 @@
                     <p>Marque provas, trabalhos e lembretes. Antecipe os movimentos e planeje seus golpes.</p>
                 </div>
                 <div class="feature-image">
-                     <img src="screen_3.png" alt="Funcionalidade 3">
+                     <img src="screen_3.png" alt="Calendário Inteligente">
                 </div>
             </div>
 
@@ -475,7 +589,7 @@
                     <p>Capture insights e resumos importantes. Mantenha as ideias afiadas e prontas para usar.</p>
                 </div>
                 <div class="feature-image">
-                     <img src="screen_4.png" alt="Funcionalidade 4">
+                     <img src="screen_4.png" alt="Anotações Rápidas">
                 </div>
             </div>
 
@@ -484,12 +598,11 @@
 
     <section id="screenshots" class="section">
         <div class="container">
-            <h2>Funcionalidades</h2>
-            <div class="screenshots-carousel">
-                <img src="screen_1.png" alt="Screenshot 3">
-                <img src="screen_2.png" alt="Screenshot 4">
-                <img src="screen_3.png" alt="Screenshot 5">
-                <img src="screen_4.png" alt="Screenshot 6">
+            <h2>Funcionalidades em Ação</h2> <div class="screenshots-carousel">
+                <img src="screen_1.png" alt="Screenshot da funcionalidade de horários">
+                <img src="screen_2.png" alt="Screenshot da funcionalidade de notas">
+                <img src="screen_3.png" alt="Screenshot da funcionalidade de calendário">
+                <img src="screen_4.png" alt="Screenshot da funcionalidade de anotações">
             </div>
         </div>
     </section>
@@ -498,11 +611,36 @@
         <div class="container">
             <h2>Pronto para Cortar Árvores?</h2>
             <p>Chega de esforço desperdiçado. Baixe o Kiponflow e comece a estudar de forma mais eficaz hoje mesmo!</p>
-             <a href="caminho/para/seu/aplicativo.apk" class="btn-apk" download>
-                <i class="fas fa-download"></i>
-                Baixar APK Agora!
-            </a>
-            <p style="margin-top: 20px; font-size: 0.8rem; opacity: 0.7;">
+            <p style="font-size: 1rem; margin-bottom: 25px; color: var(--white-color); font-weight: bold;">Escolha a versão compatível com seu aparelho:</p>
+
+            <div class="cta-download-options">
+                <div class="download-item">
+                    <a href="https://drive.google.com/file/d/1XenRbKm79qF7Y0zrST1h8GHd1ni1N8Bz/view?usp=drive_link" class="btn-apk" download>
+                        <i class="fas fa-download"></i>
+                        Download APK (64-bit)
+                    </a>
+                    <p class="apk-description">Celulares modernos (Recomendado)</p>
+                </div>
+                <div class="download-item">
+                    <a href="https://drive.google.com/file/d/1oGTCnmgj6ww2yPlQVRYssxARf2OOZXBH/view?usp=drive_link" class="btn-apk btn-apk-alt" download> <i class="fas fa-download"></i>
+                        Download APK (32-bit)
+                    </a>
+                    <p class="apk-description">Celulares mais antigos</p>
+                </div>
+                <div class="download-item">
+                    <a href="https://drive.google.com/file/d/1YtIojcbQwOXDDhHKNL8n8rDNbhE7og5k/view?usp=drive_link" class="btn-apk btn-apk-alt" download>
+                        <i class="fas fa-download"></i>
+                        Download APK (x86_64)
+                    </a>
+                    <p class="apk-description">Emuladores / Dispositivos x86</p>
+                </div>
+            </div>
+
+            <p style="margin-top: 30px; font-size: 0.9rem; opacity: 0.8;">
+                Não sabe qual escolher? A versão <strong>64-bit</strong> é a mais comum para celulares fabricados nos últimos anos.
+                Se tiver dúvidas, tente primeiro a de 64-bit.
+            </p>
+            <p style="font-size: 0.8rem; opacity: 0.7; margin-top: 10px;">
                 (Disponível para Android via download direto)
             </p>
         </div>
