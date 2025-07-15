@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiponflow - Seu Próximo Nível.</title>
+    <link rel="icon" href="icon.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #4A6B8A; /* Azul */
+            --accent-color: #F8D568; /* Amarelo */
+            --dark-color: #2c3e50; /* Azul escuro/Chumbo */
+            --light-gray: #ecf0f1; /* Cinza bem claro */
+            --white-color: #fff;
+            --text-color: #34495e; /* Cinza azulado */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            background-color: var(--light-gray);
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh; /* Ocupa a altura total da viewport */
+            text-align: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 700px;
+            width: 100%;
+            padding: 30px;
+            background-color: var(--white-color);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .app-image img {
+            max-width: 250px; /* Tamanho da imagem do app */
+            height: auto;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            color: var(--dark-color);
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: var(--text-color);
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 35px;
+            background-color: var(--primary-color);
+            color: var(--white-color);
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(74, 107, 138, 0.4);
+        }
+
+        .cta-button:hover {
+            background-color: var(--dark-color);
+            transform: translateY(-3px);
+            box-shadow: 0 7px 15px rgba(44, 62, 80, 0.3);
+        }
+
+        .small-text {
+            font-size: 0.9rem;
+            margin-top: 25px;
+            color: #666;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            p {
+                font-size: 1rem;
+            }
+            .app-image img {
+                max-width: 200px;
+            }
+            .container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="app-image">
+            <img src="icon.png" alt="Logo do Aplicativo Kiponflow">
+        </div>
+        <h1>Os melhores já estão usando. E você?</h1>
+        <p>Alcance um novo patamar nos estudos com o Kiponflow. Organize-se, planeje e conquiste seus objetivos.</p>
+        <a href="https://play.google.com/store/apps/details?id=com.utalahari.kiponflow" class="cta-button" target="_blank">
+            Comece a Otimizar Seus Estudos
+        </a>
+        <p class="small-text">Disponível na Google Play Store.</p>
+    </div>
+</body>
+</html>
