@@ -500,23 +500,25 @@
                 <h1>Desperte seu Potencial Acadêmico.</h1>
                 <p>O sucesso nos estudos não é sobre trabalhar mais, é sobre trabalhar de forma mais inteligente. Organize, planeje e conquiste com nosso app.</p>
                 <p style="font-size: 1rem; margin-bottom: 15px; font-weight: bold;">Disponível agora:</p>
+                
                 <div class="apk-download-options">
+                    
                     <div class="download-item">
-                        <a href="https://play.google.com/store/apps/details?id=com.utalahari.kiponflow" class="btn-apk btn-apk-secondary" target="_blank">
-                            <i class="fab fa-google-play"></i>
-                            Baixar na Play Store
+                        <a href="https://play.google.com/apps/testing/com.utalahari.kiponflow" class="btn-apk btn-apk-secondary" target="_blank">
+                            <i class="fab fa-google-play"></i> Acesso Beta (Play Store)
                         </a>
-                        <p class="apk-description">Versão oficial da Google Play Store</p>
+                        <p class="apk-description"><strong>Requer login na conta Google</strong> para o teste Beta.</p>
                     </div>
+                    
                     <div class="download-item">
-                        <a href="https://play.google.com/apps/testing/com.utalahari.kiponflow" class="btn-apk btn-apk-tertiary" target="_blank">
-                            <i class="fas fa-flask"></i>
-                            Teste Beta (Web)
+                        <a href="#" class="btn-apk btn-apk-tertiary js-apk-download">
+                            <i class="fas fa-file-download"></i>
+                            Baixar APK Direto
                         </a>
-                        <p class="apk-description">Acesse a versão de teste pelo navegador</p>
+                        <p class="apk-description">Download direto totalmente seguro..</p>
                     </div>
                 </div>
-            </div>
+                </div>
             <div class="hero-image">
                 <img src="icon.png" alt="Mockup do Aplicativo Kiponflow">
             </div>
@@ -608,24 +610,24 @@
             <p>Chega de esforço desperdiçado. Baixe o Kiponflow e comece a estudar de forma mais eficaz hoje mesmo!</p>
 
             <div class="cta-download-options">
+                
                 <div class="download-item">
-                    <a href="https://play.google.com/store/apps/details?id=com.utalahari.kiponflow" class="btn-apk" target="_blank">
-                        <i class="fab fa-google-play"></i>
-                        Download na Play Store
+                    <a href="https://play.google.com/apps/testing/com.utalahari.kiponflow" class="btn-apk" target="_blank">
+                        <i class="fab fa-google-play"></i> Acesso Beta (Play Store)
                     </a>
-                    <p class="apk-description">Versão oficial disponível na Google Play Store</p>
+                    <p class="apk-description"><strong>Requer login na conta Google</strong> para o teste Beta.</p>
                 </div>
+                
                 <div class="download-item">
-                    <a href="https://play.google.com/apps/testing/com.utalahari.kiponflow" class="btn-apk btn-apk-alt" target="_blank">
-                        <i class="fas fa-flask"></i>
-                        Acesso Beta (Web)
+                     <a href="#" class="btn-apk btn-apk-alt js-apk-download">
+                        <i class="fas fa-file-download"></i>
+                        Baixar APK Direto
                     </a>
-                    <p class="apk-description">Teste a versão beta diretamente no navegador</p>
+                    <p class="apk-description">Download direto totalmente seguro.</p>
                 </div>
             </div>
-
             <p style="margin-top: 30px; font-size: 0.9rem; opacity: 0.8;">
-                Recomendamos baixar pela <strong>Play Store</strong> para ter sempre a versão mais atualizada e segura.
+                Recomendamos o acesso via <strong>Play Store</strong> para ter sempre a versão mais atualizada.
             </p>
         </div>
     </section>
@@ -636,5 +638,41 @@
         </div>
     </footer>
 
-</body>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // --- ATENÇÃO: Defina seus links de download aqui ---
+            const linkApk32bit = "https://www.mediafire.com/file/z7vztz82a5x32e4/kiponflow-32bit.apk/file";
+            const linkApk64bit = "https://www.mediafire.com/file/1u9y9dk7tm0rea6/Kiponflow-64bit.apk/file";
+            // ----------------------------------------------------
+    
+            // 1. Pegar o userAgent (convertido para minúsculas para verificação segura)
+            const userAgent = navigator.userAgent.toLowerCase();
+    
+            // 2. Usar a LÓGICA DE DETECÇÃO SOLICITADA (com strings em minúsculas)
+            // Inclui verificações de Windows (WOW64, Win64) e arquiteturas ARM/x86
+            const is64bit = userAgent.includes('wow64') || 
+                            userAgent.includes('win64') || 
+                            userAgent.includes('x64') ||
+                            userAgent.includes('x86_64') || 
+                            userAgent.includes('aarch64') || 
+                            userAgent.includes('arm64');
+    
+            // 3. Definir o link final com base na detecção
+            let linkFinal;
+            if (is64bit) {
+                linkFinal = linkApk64bit; // Se detectar qualquer string 64-bit
+            } else {
+                linkFinal = linkApk32bit; // Padrão é 32-bit
+            }
+    
+            // 4. Encontra TODOS os botões com a classe ".js-apk-download"
+            const botoesApk = document.querySelectorAll('.js-apk-download');
+            
+            // 5. Atualiza o link (href) de CADA botão encontrado
+            botoesApk.forEach(function(botao) {
+                botao.href = linkFinal;
+            });
+        });
+    </script>
+    </body>
 </html>
